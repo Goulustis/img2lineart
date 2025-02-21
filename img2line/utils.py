@@ -36,3 +36,12 @@ def decode_base64(base64_str:str):
     buffer = base64.b64decode(base64_str)
     image = Image.open(BytesIO(buffer))
     return np.array(image)
+
+def get_shape(inp):
+    if isinstance(inp, str):
+        image = Image.open(inp)
+        return image.size
+    elif isinstance(inp, np.ndarray):
+        return inp.shape[:2]
+    else:
+        raise ValueError("Invalid input type")
