@@ -49,6 +49,7 @@ class SDAPI:
                 "n_iter": 1,
                 "init_images": init_images,
                 "batch_size": batch_size,
+                "resize_mode": "1",
                 "override_settings": {
                     'sd_model_checkpoint': "dreamshaper_8.safetensors [879db523c3]",  # this can use to switch sd model
                 },
