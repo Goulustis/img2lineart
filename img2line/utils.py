@@ -45,3 +45,6 @@ def get_shape(inp):
         return inp.shape[:2]
     else:
         raise ValueError("Invalid input type")
+
+def to_binary(image, threshold=165):
+    return (image > threshold).astype(np.uint8) * 255
