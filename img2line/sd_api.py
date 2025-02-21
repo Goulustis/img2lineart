@@ -7,7 +7,7 @@ from loguru import logger
 import numpy as np
 
 from img2line.config import InstantiateConfig
-from img2line.utils import encode_to_base64, decode_base64
+from img2line.utils import encode_to_base64, decode_base64, get_shape
 
 
 @dataclass
@@ -24,32 +24,34 @@ class SDAPI:
         self.server_url = config.webui_server_url
     
 
-    def img2img(self, inp:str | np.ndarray, ctrl_inp:str | np.ndarray, **payload_override):
+    def img2img(self, inp:str | np.ndarray, ctrl_inp:str | np.ndarray, out_sz:int=None, **payload_override):
         """
         inp_f: str | numpy array
             Path to the input image file
         ctrl_inp_f: str | numpy array
             Path to control net image file
         """
+
+        h, w = get_shape(inp) if out_sz is None else (out_sz, out_sz)
+
         inp_img = encode_to_base64(inp)
         ctrl_img = encode_to_base64(ctrl_inp)
 
         init_images = [inp_img]
         batch_size = 1 # number of images to generate per input
-        seed = random.randint(0, 1000000) if 'seed' not in payload_override else payload_override['seed']
+        seed = random.randint(0, 1000000) if payload_override.get("seed") is None else payload_override["seed"]
 
         payload = {
-                "prompt": "line art drawing, line art, black line art, black line, black color, black lines, a line drawing",
+                "prompt": "line art drawing, line art, black line art, black line, black color, black lines, a line drawing, monochrome",
                 "seed": seed,
                 "steps": 20,
-                "width": 512,
-                "height": 512,
+                "width": w,
+                "height": h,
                 "denoising_strength": 0.93,
                 "sampler_name": "DPM++ 3M SDE",
                 "n_iter": 1,
                 "init_images": init_images,
                 "batch_size": batch_size,
-                "resize_mode": "1",
                 "override_settings": {
                     'sd_model_checkpoint': "dreamshaper_8.safetensors [879db523c3]",  # this can use to switch sd model
                 },
@@ -106,3 +108,11 @@ class SDAPI:
         )
         response = urllib.request.urlopen(request)
         return json.loads(response.read().decode('utf-8'))
+    
+    def to_lineart(self, inp, out_sz=None, n_iter=2, **payload_override):
+        img = inp
+        for _ in range(n_iter):
+            blank = img.copy()
+            blank.fill(255)
+            img = self.img2img(blank, img, out_sz=out_sz, **payload_override)
+        return img
