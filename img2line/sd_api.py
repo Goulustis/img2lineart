@@ -36,7 +36,7 @@ class SDAPI:
 
         init_images = [inp_img]
         batch_size = 1 # number of images to generate per input
-        seed = random.randint(0, 1000000)
+        seed = random.randint(0, 1000000) if 'seed' not in payload_override else payload_override['seed']
 
         payload = {
                 "prompt": "line art drawing, line art, black line art, black line, black color, black lines, a line drawing",
