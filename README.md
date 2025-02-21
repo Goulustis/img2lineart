@@ -8,7 +8,7 @@ Turns images into line art.
     - [control_canny-fp16](https://huggingface.co/webui/ControlNet-modules-safetensors/tree/main)
 - start diffusion server with
 ```bash
-# NOTE: remove --nowebui for gui; need to update the url if removed
+# NOTE: remove --nowebui for gui; copy url to webui_server_url below
 bash webui.sh --api --nowebui
 ```
 
