@@ -75,8 +75,8 @@ class SDAPI:
                                 "output_dir": "",
                                 "pixel_perfect": True,
                                 "processor_res": 512,
-                                # "resize_mode": "Crop and Resize",
-                                "resize_mode": "Just Resize",
+                                "resize_mode": "Crop and Resize",
+                                # "resize_mode": "Just Resize",
                                 "threshold_a": 100,
                                 "threshold_b": 200,
                                 "weight": 1
