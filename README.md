@@ -28,3 +28,4 @@ out = sd.to_lineart(img, out_sz=512, seed=32)
 
 ## Acknowlegement
 [stable diffusion webui api example](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/API)
+[youtube tutorial inspiration](https://www.youtube.com/watch?v=xlO1Av20-OY)
