@@ -1,5 +1,5 @@
 # Img2lineart
-turns images into line art
+Turns images into line art.
 
 ## Installation
 - install [stable diffusion webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) with this commit: 82a973c04367123ae98bd9abdf80d9eda9b910e2
@@ -19,6 +19,12 @@ img = # np array or image path (str)
 sd = SDAPI_config(webui_server_url="http://127.0.0.1:7860").setup()
 out = sd.to_lineart(img, out_sz=512, seed=32)
 ```
+
+## Example input/output
+<p float="left">
+    <img src="docs/input.jpeg" alt="Input Image" width="30%" />
+    <img src="docs/output.png" alt="Output Image" width="30%" />
+</p>
 
 ## Acknowlegement
 [stable diffusion webui api example](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/API)
