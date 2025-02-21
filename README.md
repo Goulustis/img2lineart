@@ -13,9 +13,12 @@ bash webui.sh --api --nowebui
 ```
 
 ## Usage
-do this after done todos
+```python
+from img2line.sd_api import SDAPI_config
+img = # np array or image path (str)
+sd = SDAPI_config(webui_server_url="http://127.0.0.1:7860").setup()
+out = sd.to_lineart(img, out_sz=512, seed=32)
+```
 
-## Todo
-- [ ] change the output dir, looks ugly right now
-- [ ] finish implementing the pipeline
-    - do ori_img -> pipeline -> out_1 -> pipeline -> out2
+## Acknowlegement
+[stable diffusion webui api example](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/API)
