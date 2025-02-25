@@ -12,6 +12,9 @@ Turns images into line art.
 bash webui.sh --api --nowebui
 ```
 
+## TODO
+- [ ] Use a LLM to add the description of the image into the prompt; if not; too difficult for the model
+
 ## Usage
 ```python
 from img2line.sd_api import SDAPI_config
