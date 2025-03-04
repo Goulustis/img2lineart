@@ -1,0 +1,12 @@
+[project]
+name = "img2line" 
+version = "0.1"   
+dependencies = [
+    "numpy",
+    "opencv-python",
+    "Pillow",
+    "loguru"
+]
+
+[tool.setuptools.packages.find]
+include = ["img2line"]
