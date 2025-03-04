@@ -109,8 +109,10 @@ class SDAPI:
         response = urllib.request.urlopen(request)
         return json.loads(response.read().decode('utf-8'))
     
-    def to_lineart(self, inp, out_sz:int=None, n_iter:int=2, **payload_override):
+    def to_lineart(self, inp:np.ndarray, out_sz:int=None, n_iter:int=2, **payload_override):
         """
+        inp: np.ndarray
+            Input image; expect [0 - 255] range
         out_sz: int
             Size of the output image
         n_iter: int
