@@ -38,9 +38,12 @@ def decode_base64(base64_str:str):
     return np.array(image)
 
 def get_shape(inp):
+    """
+    returns (h, w) of the input image.
+    """
     if isinstance(inp, str):
         image = Image.open(inp)
-        return image.size
+        return image.size[::-1]
     elif isinstance(inp, np.ndarray):
         return inp.shape[:2]
     else:
