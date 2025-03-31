@@ -3,6 +3,7 @@ Turns images into line art.
 
 ## Installation
 - install [stable diffusion webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) with this commit: 82a973c04367123ae98bd9abdf80d9eda9b910e2
+- install the [control net](https://github.com/Mikubill/sd-webui-controlnet) Extension
 - download control net and diffusion checkpoint:
     - [dreamshaper_8.safetensors](https://civitai.com/models/4384/dreamshaper)
     - [control_canny-fp16](https://huggingface.co/webui/ControlNet-modules-safetensors/tree/main)
